@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ BKSDA Interaktif (Lengkap)</title>
+    <style>
+        /* CSS Sederhana untuk Tampilan */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 400px;
+            height: 600px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background-color: #0056b3; /* Biru Tua */
+            color: white;
+            padding: 16px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            flex-grow: 1;
+        }
+        .chat-window {
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .message-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+        .user-message-wrapper { align-items: flex-end; }
+        .bot-message-wrapper { align-items: flex-start; }
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .bot-message {
+            background-color: #e9ebee;
+            color: #1c1e21;
+            border-bottom-left-radius: 4px;
+        }
+        .user-message {
+            background-color: #0084ff; /* Biru Cerah */
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .timestamp {
+            font-size: 0.7rem;
+            color: #90949c;
+            margin-top: 4px;
+            padding: 0 8px;
+        }
+        .suggestions-container, .feedback-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            align-self: flex-start;
+        }
+        .suggestions-container {
+            flex-direction: column;
+        }
+        .suggestion-btn {
+            background-color: #fff;
+            border: 1px solid #0084ff;
+            color: #0084ff;
+            padding: 10px 15px;
+            border-radius: 18px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.2s;
+        }
+        .link-btn {
+            display: block;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .link-btn.simaksi { background-color: #28a745; }
+        .link-btn.whatsapp { background-color: #25D366; }
+        .link-btn.facebook { background-color: #1877F2; }
+        .link-btn.instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .link-btn.youtube { background-color: #FF0000; }
+        .chat-input {
+            display: flex;
+            padding: 16px;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            border-radius: 18px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading-indicator {
+            display: flex;
+            align-items: center;
+            background-color: #e9ebee;
+            border-radius: 18px;
+            padding: 12px 15px;
+            border-bottom-left-radius: 4px;
+        }
+        .loading-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #90949c;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading-indicator .dot1 { animation-delay: -0.32s; }
+        .loading-indicator .dot2 { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+        .feedback-btn {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .header-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .header-btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Uji Coba Backend FAQ Bot</h2>
+            <button id="clear-chat-btn" class="header-btn" title="Hapus Percakapan">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            </button>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <!-- Pesan akan ditambahkan oleh JavaScript -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ketik pesan Anda...">
+            <button id="send-btn" title="Kirim">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const clearChatBtn = document.getElementById('clear-chat-btn');
+        let lastUserQuestion = '';
+
+        // Fungsi utama untuk menambahkan semua jenis elemen ke chat
+        function addMessage(text, sender, data = {}) {
+            const { suggestions = [], link, link_text, whatsapp_link, social_links = [], image_url } = data;
+            
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = `message-wrapper ${sender}-message-wrapper`;
+
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${sender}-message`);
+            messageDiv.textContent = text;
+            messageWrapper.appendChild(messageDiv);
+            
+            const time = new Date();
+            const timestamp = document.createElement('span');
+            timestamp.className = 'timestamp';
+            timestamp.textContent = `${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
+            messageWrapper.appendChild(timestamp);
+
+            chatWindow.appendChild(messageWrapper);
+
+            if (image_url) {
+                const img = document.createElement('img');
+                img.src = image_url;
+                img.style.maxWidth = '100%';
+                img.style.borderRadius = '12px';
+                img.style.marginTop = '8px';
+                chatWindow.appendChild(img);
+            }
+
+            if (link && link_text) createLinkButton(link, link_text, 'simaksi');
+            if (whatsapp_link) createLinkButton(`https://wa.me/${whatsapp_link.number}`, whatsapp_link.text, 'whatsapp');
+            if (social_links.length > 0) {
+                social_links.forEach(social => createLinkButton(social.url, social.text, social.platform.toLowerCase()));
+            }
+
+            if (suggestions.length > 0) {
+                const suggestionsContainer = document.createElement('div');
+                suggestionsContainer.className = 'suggestions-container';
+                suggestions.forEach(suggestionText => {
+                    const btn = document.createElement('button');
+                    btn.className = 'suggestion-btn';
+                    btn.textContent = suggestionText;
+                    btn.onclick = () => { sendMessage(suggestionText); };
+                    suggestionsContainer.appendChild(btn);
+                });
+                chatWindow.appendChild(suggestionsContainer);
+            }
+
+            if (sender === 'bot') {
+                addFeedbackButtons(text);
+            }
+            
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function createLinkButton(href, text, typeClass) {
+            const linkBtn = document.createElement('a');
+            linkBtn.className = `link-btn ${typeClass}`;
+            linkBtn.href = href;
+            linkBtn.target = '_blank';
+            linkBtn.textContent = text;
+            chatWindow.appendChild(linkBtn);
+        }
+
+        function addFeedbackButtons(answerText) {
+            const feedbackContainer = document.createElement('div');
+            feedbackContainer.className = 'feedback-container';
+            const thumbUp = document.createElement('button');
+            thumbUp.className = 'feedback-btn';
+            thumbUp.textContent = '👍';
+            thumbUp.onclick = () => {
+                sendFeedback({ question: lastUserQuestion, answer: answerText, feedback: 'good' });
+                feedbackContainer.innerHTML = '<span style="color: green; font-size: 0.8rem;">Terima kasih!</span>';
+            };
+            const thumbDown = document.createElement('button');
+            thumbDown.className = 'feedback-btn';
+            thumbDown.textContent = '👎';
+            thumbDown.onclick = () => {
+                sendFeedback({ question: lastUserQuestion, answer: answerText, feedback: 'bad' });
+                feedbackContainer.innerHTML = '<span style="color: red; font-size: 0.8rem;">Terima kasih, kami akan perbaiki.</span>';
+            };
+            feedbackContainer.appendChild(thumbUp);
+            feedbackContainer.appendChild(thumbDown);
+            chatWindow.appendChild(feedbackContainer);
+        }
+
+        function showLoadingIndicator() {
+            const loadingWrapper = document.createElement('div');
+            loadingWrapper.id = 'loading';
+            loadingWrapper.className = 'message-wrapper bot-message-wrapper';
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'loading-indicator';
+            loadingDiv.innerHTML = `<span class="dot1"></span><span class="dot2"></span><span class="dot3"></span>`;
+            loadingWrapper.appendChild(loadingDiv);
+            chatWindow.appendChild(loadingWrapper);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function hideLoadingIndicator() {
+            const loadingDiv = document.getElementById('loading');
+            if (loadingDiv) loadingDiv.remove();
+        }
+
+        async function sendMessage(messageTextOverride) {
+            const messageText = messageTextOverride || userInput.value.trim();
+            if (messageText === '') return;
+
+            lastUserQuestion = messageText;
+            addMessage(messageText, 'user');
+            userInput.value = '';
+            showLoadingIndicator();
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: messageText }),
+                });
+
+                if (!response.ok) throw new Error('Gagal menghubungi server.');
+                const data = await response.json();
+                
+                setTimeout(() => {
+                    hideLoadingIndicator();
+                    addMessage(data.response, 'bot', data);
+                }, 500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                hideLoadingIndicator();
+                addMessage('Maaf, terjadi kesalahan saat menghubungi server.', 'bot');
+            }
+        }
+
+        async function sendFeedback(feedbackData) {
+            try {
+                await fetch('http://127.0.0.1:5000/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(feedbackData),
+                });
+                console.log('Feedback sent!', feedbackData);
+            } catch (error) {
+                console.error('Failed to send feedback:', error);
+            }
+        }
+
+        function clearChat() {
+            chatWindow.innerHTML = '';
+            sendMessage('halo');
+        }
+
+        sendBtn.addEventListener('click', () => sendMessage());
+        userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') sendMessage();
+        });
+        clearChatBtn.addEventListener('click', clearChat);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            sendMessage('halo');
+        });
+    </script>
+
+</body>
+</html>

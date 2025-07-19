@@ -1,0 +1,125 @@
+{
+  "greetings": {
+    "keywords": ["halo", "hai", "pagi", "siang", "sore", "malam", "bantuan", "menu", "menu utama", "permisi", "p", "ping", "assalamualaikum", "selamat datang", "welcome", "kembali","hello"],
+    "response": "Selamat Datang! Saya Asisten Virtual BBKSDA Riau. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda:",
+    "suggestions": ["Layanan & Izin", "Penanganan Konflik Satwa", "Informasi Umum", "Fanbase"]
+  },
+  "layanan_izin": {
+    "keywords": ["layanan & izin", "perizinan", "mengurus izin", "buat izin"],
+    "response": "Tentu, kami melayani beberapa perizinan. Mana yang Anda perlukan?",
+    "suggestions": ["Info SIMAKSI", "Izin Penelitian", "Izin Penangkaran"]
+  },
+  "simaksi_info": {
+    "keywords": ["simaksi", "info simaksi", "izin masuk", "mendaki", "masuk hutan", "tiket masuk", "izin pendakian", "camping"],
+    "response": "Tentu, SIMAKSI (Surat Izin Masuk Kawasan Konservasi) diperlukan untuk kegiatan seperti pendakian atau penelitian. Apa yang ingin Anda ketahui lebih lanjut tentang SIMAKSI?",
+    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Ajukan SIMAKSI Online"],
+    "context_id": "simaksi",
+    "link": "https://bbksda-riau.id/online/pengajuan_simaksi",
+    "link_text": "Ajukan SIMAKSI Online"
+  },
+  "simaksi_syarat": {
+    "keywords": ["syarat", "persyaratan", "dokumen apa saja", "berkas","syarat simaksi"],
+    "parent_context": "simaksi",
+    "response": "Syarat umum untuk pengajuan SIMAKSI adalah fotokopi KTP, surat keterangan sehat, dan mengisi formulir yang disediakan. Untuk kegiatan penelitian, proposal riset juga wajib dilampirkan.",
+    "suggestions": ["Berapa biayanya?", "Ajukan SIMAKSI Online", "Kembali ke Menu Utama"]
+  },
+  "simaksi_biaya": {
+    "keywords": ["biaya", "harga", "tarif", "bayar berapa"],
+    "parent_context": "simaksi",
+    "response": "Biaya atau tarif untuk SIMAKSI (karcis masuk) bervariasi tergantung pada kawasan konservasi yang dituju dan jenis kegiatan. Sebaiknya hubungi langsung kantor BKSDA Riau untuk informasi tarif yang paling akurat.",
+    "suggestions": ["Apa saja syaratnya?", "Ajukan SIMAKSI Online", "Kembali ke Menu Utama"]
+  },
+  "simaksi_link": {
+    "keywords": ["ajukan simaksi online", "link simaksi", "daftar simaksi"],
+    "parent_context": "simaksi",
+    "response": "Anda dapat mengajukan permohonan SIMAKSI secara online melalui tautan di bawah ini.",
+    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Kembali ke Menu Utama"],
+    "link": "https://bbksda-riau.id/online/pengajuan_simaksi",
+    "link_text": "Buka Halaman Pengajuan SIMAKSI"
+  },
+  "penelitian_info": {
+    "keywords": ["izin penelitian", "riset", "penelitian", "izin riset"],
+    "response": "BBKSDA Riau mendukung kegiatan penelitian. Anda perlu mengajukan proposal dan mengurus perizinan. Silakan hubungi bidang teknis kami atau datang langsung ke kantor untuk konsultasi lebih lanjut.",
+    "suggestions": ["Kembali ke Menu Utama"]
+  },
+  "penangkaran_info": {
+    "keywords": ["izin penangkaran", "penangkaran satwa", "memelihara satwa"],
+    "response": "Perizinan penangkaran satwa yang dilindungi memiliki prosedur yang ketat untuk memastikan kesejahteraan satwa. Untuk informasi detail, silakan hubungi kantor BKSDA Riau.",
+    "suggestions": ["Kembali ke Menu Utama"]
+  },
+  "penanganan_konflik": {
+    "keywords": ["penanganan konflik satwa", "lapor konflik", "gangguan hewan", "hewan liar masuk"],
+    "response": "Tentu. Informasi penanganan untuk satwa apa yang Anda butuhkan?",
+    "suggestions": ["Harimau", "Gajah", "Beruang", "Monyet"]
+  },
+  "harimau_info": {
+    "keywords": ["harimau", "macan"],
+    "response": "Ini adalah Harimau Sumatera (Panthera tigris sumatrae). Jika bertemu: 1. Tetap tenang, jangan berlari. 2. Mundur perlahan. 3. Jangan menatap matanya langsung. Segera hubungi Call Center kami di 0813-7474-2981.",
+    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
+    "image_url": "https://images.pexels.com/photos/2541239/pexels-photo-2541239.jpeg"
+  },
+  "gajah_info": {
+    "keywords": ["gajah"],
+    "response": "Ini adalah Gajah Asia (Elephas maximus). Untuk menghindari konflik dengan gajah: 1. Jangan beraktivitas di jalur lintasannya saat malam hari. 2. Buat bunyi-bunyian untuk menghalau. Laporkan segera jika gajah masuk ke pemukiman.",
+    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
+    "image_url": "https://ksdae.menlhk.go.id/assets/gallery/Gajah_Tunggang_Suryono.jpg"
+  },
+  "beruang_info": {
+    "keywords": ["beruang", "beruang madu"],
+    "response": "Ini adalah seekor Beruang (Ursidae). Jika bertemu di alam liar: 1. Jaga jarak aman. 2. Jangan memprovokasi.",
+    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
+    "image_url": "https://animalium.id/wp-content/uploads/2022/11/Beruang-madu-Helarctos-malayanus.jpg"
+  },
+  "monyet_info": {
+    "keywords": ["monyet", "kera"],
+    "response": "Untuk mengatasi gangguan Monyet Ekor Panjang (Macaca fascicularis): 1. Pastikan tidak ada sumber makanan terbuka. 2. Tutup rapat tempat sampah. 3. Jangan memberi makan monyet agar mereka tidak kembali.",
+    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
+    "image_url": "https://ksdae.menlhk.go.id/assets/news/20240520165734-2024-05-20konten165717.jpg"
+  },
+  "informasi_umum": {
+    "keywords": ["informasi umum", "info umum", "tentang bksda"],
+    "response": "Apa yang ingin Anda ketahui tentang kami?",
+    "suggestions": ["Apa itu BBKSDA?", "Tugas & Fungsi", "Kontak Kami"]
+  },
+  "apa_itu_bksda": {
+    "keywords": ["apa itu bksda", "bksda adalah", "pengertian bksda"],
+    "response": "BBKSDA adalah singkatan dari Balai Besar Konservasi Sumber Daya Alam, sebuah Unit Pelaksana Teknis (UPT) dari Direktorat Jenderal KSDAE, Kementerian Lingkungan Hidup dan Kehutanan.",
+    "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"]
+  },
+  "tugas_fungsi": {
+    "keywords": ["tugas & fungsi", "kerja bbksda", "apa kerja bbksda"],
+    "response": "Tugas utama BBKSDA Riau adalah pengelolaan kawasan konservasi, konservasi jenis satwa dan tumbuhan, serta penanganan konflik antara manusia dan satwa liar.",
+    "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"]
+  },
+  "contact_info": {
+    "keywords": ["kontak kami", "kontak", "nomor telepon", "alamat kantor", "email bksda", "call center"],
+    "response": "Kantor kami beralamat di Jl. H.R. Soebrantas KM. 8,5, Pekanbaru. Untuk laporan darurat via WhatsApp, silakan klik tautan di bawah ini.",
+    "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"],
+    "whatsapp_link": { "number": "6281374742981", "text": "Hubungi Call Center (WhatsApp)" }
+  },
+  "fanbase_info": {
+    "keywords": ["fanbase", "sosial media", "sosmed", "facebook", "instagram", "youtube", "media sosial", "fb", "ig", "yt", "medsos"],
+    "response": "Terhubunglah dengan kami melalui media sosial untuk mendapatkan informasi terbaru!",
+    "suggestions": ["Kembali ke Menu Utama"],
+    "social_links": [
+        { "platform": "Facebook", "text": "Kunjungi Facebook Kami", "url": "https://www.facebook.com/profile.php?id=100088811995400" },
+        { "platform": "Instagram", "text": "Follow Instagram Kami", "url": "https://www.instagram.com/bbksda_riau/" },
+        { "platform": "YouTube", "text": "Subscribe YouTube Kami", "url": "https://www.youtube.com/channel/UCLsd05GD7vj97YBPCwafQvQ?view_as=subscriber" }
+    ]
+  },
+  "chitchat_who": {
+    "keywords": ["kamu siapa", "ini siapa", "siapa kamu", "nama kamu"],
+    "response": "Saya adalah Asisten Virtual BKSDA Riau, siap membantu Anda!",
+    "suggestions": ["Kembali ke Menu Utama"]
+  },
+  "chitchat_how_are_you": {
+    "keywords": ["apa kabar", "gimana kabarnya", "sehat"],
+    "response": "Kabar baik, terima kasih! Ada yang bisa saya bantu?",
+    "suggestions": ["Kembali ke Menu Utama"]
+  },
+  "chitchat_thanks": {
+      "keywords": ["terima kasih", "makasih", "thanks", "terimakasih"],
+      "response": "Sama-sama! Senang bisa membantu Anda.",
+      "suggestions": ["Kembali ke Menu Utama"]
+  }
+}
