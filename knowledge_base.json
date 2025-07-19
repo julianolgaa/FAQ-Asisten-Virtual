@@ -1,7 +1,7 @@
 {
   "greetings": {
     "keywords": ["halo", "hai", "pagi", "siang", "sore", "malam", "bantuan", "menu", "menu utama", "permisi", "p", "ping", "assalamualaikum", "selamat datang", "welcome", "kembali","hello"],
-    "response": "Selamat Datang! Saya Asisten Virtual BBKSDA Riau. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda:",
+    "response": "Saya Asisten Virtual BBKSDA Riau. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda:",
     "suggestions": ["Layanan & Izin", "Penanganan Konflik Satwa", "Informasi Umum", "Fanbase"]
   },
   "layanan_izin": {

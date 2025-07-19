@@ -1,11 +1,11 @@
 # File: app.py
-# Backend Flask dengan logika konteks yang lebih andal.
+# Backend Flask dengan logika konteks yang lebih andal dan sapaan dinamis.
 
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from fuzzywuzzy import process
-
+from datetime import datetime # <- Tambahkan import ini
 
 app = Flask(__name__)
 CORS(app)
@@ -22,8 +22,20 @@ def load_knowledge_base():
 knowledge_base = load_knowledge_base()
 
 # --- MANAJEMEN KONTEKS ---
-# Dalam aplikasi nyata, ini akan disimpan per sesi pengguna.
 user_context = {"topic": None}
+
+# --- FUNGSI BARU UNTUK SAPAAN DINAMIS ---
+def get_dynamic_greeting():
+    """Membuat sapaan berdasarkan waktu saat ini."""
+    current_hour = datetime.now().hour
+    if 5 <= current_hour < 12:
+        return "Selamat Pagi!"
+    elif 12 <= current_hour < 15:
+        return "Selamat Siang!"
+    elif 15 <= current_hour < 18:
+        return "Selamat Sore!"
+    else:
+        return "Selamat Malam!"
 
 # --- FUNGSI UTAMA YANG DIPERBARUI ---
 def get_bot_response(user_input):
@@ -34,8 +46,7 @@ def get_bot_response(user_input):
         for key, value in knowledge_base.items():
             if value.get("parent_context") == user_context["topic"]:
                 match = process.extractOne(text, value.get('keywords', []))
-                if match and match[1] > 85:  # Skor tinggi untuk pertanyaan spesifik dalam konteks
-                    # Jangan ubah konteks utama jika hanya menjawab pertanyaan turunan
+                if match and match[1] > 85:
                     return value
 
     # Langkah 2: Jika tidak ada kecocokan kontekstual, lakukan pencarian umum.
@@ -49,13 +60,18 @@ def get_bot_response(user_input):
 
     # Jika kecocokan terbaik cukup tinggi, berikan jawaban
     if highest_score > 75:
-        response_data = knowledge_base[best_match_key]
-        
-        # Perbarui atau hapus konteks berdasarkan jawaban baru
+        response_data = knowledge_base[best_match_key].copy() # Salin data untuk dimodifikasi
+
+        # --- LOGIKA SAPAAN DINAMIS ---
+        if best_match_key == 'greetings':
+            greeting = get_dynamic_greeting()
+            # Gabungkan sapaan dinamis dengan sisa pesan dari knowledge base
+            response_data['response'] = f"{greeting} {response_data['response']}"
+        # -----------------------------
+
         if "context_id" in response_data:
             user_context["topic"] = response_data["context_id"]
             print(f"Konteks diubah menjadi: {user_context['topic']}")
-        # Jika jawaban tidak punya konteks sendiri, dan bukan turunan, hapus konteks
         elif "parent_context" not in response_data:
             user_context["topic"] = None
             print("Konteks dihapus.")
