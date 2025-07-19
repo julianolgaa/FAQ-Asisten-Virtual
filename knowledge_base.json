@@ -1,7 +1,7 @@
 {
   "greetings": {
     "keywords": ["halo", "hai", "pagi", "siang", "sore", "malam", "bantuan", "menu", "menu utama", "permisi", "p", "ping", "assalamualaikum", "selamat datang", "welcome", "kembali","hello"],
-    "response": "Saya Asisten Virtual BBKSDA Riau. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda:",
+    "response": "Selamat Datang! Saya Asisten Virtual BBKSDA Riau. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda:",
     "suggestions": ["Layanan & Izin", "Penanganan Konflik Satwa", "Informasi Umum", "Fanbase"]
   },
   "layanan_izin": {
@@ -12,10 +12,8 @@
   "simaksi_info": {
     "keywords": ["simaksi", "info simaksi", "izin masuk", "mendaki", "masuk hutan", "tiket masuk", "izin pendakian", "camping"],
     "response": "Tentu, SIMAKSI (Surat Izin Masuk Kawasan Konservasi) diperlukan untuk kegiatan seperti pendakian atau penelitian. Apa yang ingin Anda ketahui lebih lanjut tentang SIMAKSI?",
-    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Ajukan SIMAKSI Online"],
-    "context_id": "simaksi",
-    "link": "https://bbksda-riau.id/online/pengajuan_simaksi",
-    "link_text": "Ajukan SIMAKSI Online"
+    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Bagaimana cara mengajukannya?"],
+    "context_id": "simaksi"
   },
   "simaksi_syarat": {
     "keywords": ["syarat", "persyaratan", "dokumen apa saja", "berkas","syarat simaksi"],
@@ -30,7 +28,7 @@
     "suggestions": ["Apa saja syaratnya?", "Ajukan SIMAKSI Online", "Kembali ke Menu Utama"]
   },
   "simaksi_link": {
-    "keywords": ["ajukan simaksi online", "link simaksi", "daftar simaksi"],
+    "keywords": ["ajukan simaksi online", "link simaksi", "daftar simaksi", "bagaimana cara mengajukannya"],
     "parent_context": "simaksi",
     "response": "Anda dapat mengajukan permohonan SIMAKSI secara online melalui tautan di bawah ini.",
     "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Kembali ke Menu Utama"],
