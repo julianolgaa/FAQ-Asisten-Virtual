@@ -77,13 +77,14 @@
             margin-top: 4px;
             padding: 0 8px;
         }
-        .suggestions-container, .feedback-container {
+        .suggestions-container, .feedback-container, .resort-list {
             display: flex;
             gap: 8px;
             margin-top: 8px;
             align-self: flex-start;
+            width: 100%;
         }
-        .suggestions-container {
+        .suggestions-container, .resort-list {
             flex-direction: column;
         }
         .suggestion-btn {
@@ -95,6 +96,36 @@
             cursor: pointer;
             text-align: left;
             transition: background-color 0.2s;
+        }
+        .resort-item {
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .resort-item .resort-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1c1e21;
+        }
+        .resort-item .resort-area {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .resort-item a.map-link {
+            padding: 6px 12px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            text-align: center;
+            align-self: flex-start;
         }
         .link-btn {
             display: block;
@@ -193,8 +224,7 @@
             </button>
         </div>
         <div class="chat-window" id="chat-window">
-            <!-- Pesan akan ditambahkan oleh JavaScript -->
-        </div>
+            </div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Ketik pesan Anda...">
             <button id="send-btn" title="Kirim">
@@ -212,7 +242,7 @@
 
         // Fungsi utama untuk menambahkan semua jenis elemen ke chat
         function addMessage(text, sender, data = {}) {
-            const { suggestions = [], link, link_text, whatsapp_link, social_links = [], image_url } = data;
+            const { suggestions = [], link, link_text, whatsapp_link, social_links = [], image_url, resorts = [] } = data;
             
             const messageWrapper = document.createElement('div');
             messageWrapper.className = `message-wrapper ${sender}-message-wrapper`;
@@ -237,6 +267,35 @@
                 img.style.borderRadius = '12px';
                 img.style.marginTop = '8px';
                 chatWindow.appendChild(img);
+            }
+
+            if (resorts.length > 0) {
+                const resortList = document.createElement('div');
+                resortList.className = 'resort-list';
+                resorts.forEach(resort => {
+                    const item = document.createElement('div');
+                    item.className = 'resort-item';
+                    
+                    const name = document.createElement('div');
+                    name.className = 'resort-name';
+                    name.textContent = resort.name;
+
+                    const area = document.createElement('div');
+                    area.className = 'resort-area';
+                    area.textContent = resort.wilayah_kerja;
+                    
+                    const mapLink = document.createElement('a');
+                    mapLink.className = 'map-link';
+                    mapLink.href = resort.location_url;
+                    mapLink.target = '_blank';
+                    mapLink.textContent = 'Lihat Peta Wilayah';
+                    
+                    item.appendChild(name);
+                    item.appendChild(area);
+                    item.appendChild(mapLink);
+                    resortList.appendChild(item);
+                });
+                chatWindow.appendChild(resortList);
             }
 
             if (link && link_text) createLinkButton(link, link_text, 'simaksi');
