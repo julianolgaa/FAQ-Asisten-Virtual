@@ -23,9 +23,15 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            background-image: url('bbksda.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 200px;
+            background-color: rgba(255, 255, 255, 0.95);
+            background-blend-mode: lighten;
         }
         .chat-header {
-            background-color: #0056b3; /* Biru Tua */
+            background-color: #0acc1a;
             color: white;
             padding: 16px;
             border-top-left-radius: 12px;
@@ -34,11 +40,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; 
+            padding-left: 50px; 
+        }
+        .header-logo {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 35px;
+            width: 35px;
         }
         .chat-header h2 {
             margin: 0;
             font-size: 1.2rem;
             flex-grow: 1;
+            text-align: center;
         }
         .chat-window {
             flex-grow: 1;
@@ -67,7 +84,7 @@
             border-bottom-left-radius: 4px;
         }
         .user-message {
-            background-color: #0084ff; /* Biru Cerah */
+            background-color: #0084ff;
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -89,8 +106,8 @@
         }
         .suggestion-btn {
             background-color: #fff;
-            border: 1px solid #0084ff;
-            color: #0084ff;
+            border: 1px solid #0acc1a;
+            color: #0acc1a;
             padding: 10px 15px;
             border-radius: 18px;
             cursor: pointer;
@@ -158,7 +175,7 @@
             margin-right: 10px;
         }
         .chat-input button {
-            background-color: #0084ff;
+            background-color: #0acc1a;
             color: white;
             border: none;
             border-radius: 50%;
@@ -218,13 +235,21 @@
 
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Uji Coba Backend FAQ Bot</h2>
+            <img src="bbksda.png" alt="Logo" class="header-logo">
+            <h2>FAQ BBKSDA</h2>
             <button id="clear-chat-btn" class="header-btn" title="Hapus Percakapan">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
             </button>
         </div>
         <div class="chat-window" id="chat-window">
+            <!-- *** AWAL PERUBAHAN: Indikator loading diletakkan di sini dan disembunyikan *** -->
+            <div id="loading-indicator-wrapper" class="message-wrapper bot-message-wrapper" style="display: none;">
+                <div class="loading-indicator">
+                    <span class="dot1"></span><span class="dot2"></span><span class="dot3"></span>
+                </div>
             </div>
+            <!-- *** AKHIR PERUBAHAN *** -->
+        </div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Ketik pesan Anda...">
             <button id="send-btn" title="Kirim">
@@ -240,7 +265,6 @@
         const clearChatBtn = document.getElementById('clear-chat-btn');
         let lastUserQuestion = '';
 
-        // Fungsi utama untuk menambahkan semua jenis elemen ke chat
         function addMessage(text, sender, data = {}) {
             const { suggestions = [], link, link_text, whatsapp_link, social_links = [], image_url, resorts = [] } = data;
             
@@ -283,16 +307,33 @@
                     const area = document.createElement('div');
                     area.className = 'resort-area';
                     area.textContent = resort.wilayah_kerja;
+
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.style.display = 'flex';
+                    buttonContainer.style.gap = '8px';
                     
-                    const mapLink = document.createElement('a');
-                    mapLink.className = 'map-link';
-                    mapLink.href = resort.location_url;
-                    mapLink.target = '_blank';
-                    mapLink.textContent = 'Lihat Peta Wilayah';
+                    const locationLink = document.createElement('a');
+                    locationLink.className = 'map-link';
+                    locationLink.href = resort.location_url;
+                    locationLink.target = '_blank';
+                    locationLink.textContent = 'Lokasi';
+                    locationLink.style.backgroundColor = '#007bff';
                     
+                    buttonContainer.appendChild(locationLink);
+                    
+                    const exceptions = ["Resort Tanjung Pinang", "Pusat Konservasi Gajah Minas"];
+                    if (!exceptions.includes(resort.name) && resort.map_url) {
+                        const mapLink = document.createElement('a');
+                        mapLink.className = 'map-link';
+                        mapLink.href = resort.map_url;
+                        mapLink.target = '_blank';
+                        mapLink.textContent = 'Peta Wilayah';
+                        buttonContainer.appendChild(mapLink);
+                    }
+
                     item.appendChild(name);
                     item.appendChild(area);
-                    item.appendChild(mapLink);
+                    item.appendChild(buttonContainer); 
                     resortList.appendChild(item);
                 });
                 chatWindow.appendChild(resortList);
@@ -355,22 +396,24 @@
             chatWindow.appendChild(feedbackContainer);
         }
 
+        // *** AWAL PERUBAHAN: Fungsi show/hide loading diubah ***
         function showLoadingIndicator() {
-            const loadingWrapper = document.createElement('div');
-            loadingWrapper.id = 'loading';
-            loadingWrapper.className = 'message-wrapper bot-message-wrapper';
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'loading-indicator';
-            loadingDiv.innerHTML = `<span class="dot1"></span><span class="dot2"></span><span class="dot3"></span>`;
-            loadingWrapper.appendChild(loadingDiv);
-            chatWindow.appendChild(loadingWrapper);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+            const loadingWrapper = document.getElementById('loading-indicator-wrapper');
+            if (loadingWrapper) {
+                loadingWrapper.style.display = 'flex';
+                // Pindahkan ke bagian bawah chat window setiap kali ditampilkan
+                chatWindow.appendChild(loadingWrapper);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
         }
 
         function hideLoadingIndicator() {
-            const loadingDiv = document.getElementById('loading');
-            if (loadingDiv) loadingDiv.remove();
+            const loadingWrapper = document.getElementById('loading-indicator-wrapper');
+            if (loadingWrapper) {
+                loadingWrapper.style.display = 'none';
+            }
         }
+        // *** AKHIR PERUBAHAN ***
 
         async function sendMessage(messageTextOverride) {
             const messageText = messageTextOverride || userInput.value.trim();
@@ -382,7 +425,7 @@
             showLoadingIndicator();
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/chat', {
+                const response = await fetch('http://julianolgaa.pythonanywhere.com/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: messageText }),
@@ -391,10 +434,11 @@
                 if (!response.ok) throw new Error('Gagal menghubungi server.');
                 const data = await response.json();
                 
+                // Sembunyikan loading sebelum menambahkan pesan baru
+                hideLoadingIndicator();
                 setTimeout(() => {
-                    hideLoadingIndicator();
                     addMessage(data.response, 'bot', data);
-                }, 500);
+                }, 200); // Penundaan sedikit agar lebih mulus
 
             } catch (error) {
                 console.error('Error:', error);
@@ -405,7 +449,7 @@
 
         async function sendFeedback(feedbackData) {
             try {
-                await fetch('http://127.0.0.1:5000/api/feedback', {
+                await fetch('http://julianolgaa.pythonanywhere.com/api/feedback', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(feedbackData),
@@ -417,8 +461,24 @@
         }
 
         function clearChat() {
-            chatWindow.innerHTML = '';
+            // Sembunyikan juga loading indicator saat chat dibersihkan
+            hideLoadingIndicator();
+            // Hapus semua elemen anak kecuali loading indicator
+            while (chatWindow.firstChild && chatWindow.firstChild.id !== 'loading-indicator-wrapper') {
+                chatWindow.removeChild(chatWindow.firstChild);
+            }
             sendMessage('halo');
+        }
+
+        async function recordVisit() {
+            try {
+                await fetch('http://julianolgaa.pythonanywhere.com/api/visit', {
+                    method: 'POST',
+                });
+                console.log('Kunjungan dicatat.');
+            } catch (error) {
+                console.error('Gagal mencatat kunjungan:', error);
+            }
         }
 
         sendBtn.addEventListener('click', () => sendMessage());
@@ -429,6 +489,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             sendMessage('halo');
+            recordVisit();
         });
     </script>
 

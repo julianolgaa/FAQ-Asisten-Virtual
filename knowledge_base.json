@@ -65,7 +65,7 @@
     "keywords": ["gajah"],
     "response": "Ini adalah Gajah Asia (Elephas maximus). Untuk menghindari konflik dengan gajah: 1. Jangan beraktivitas di jalur lintasannya saat malam hari. 2. Buat bunyi-bunyian untuk menghalau. Laporkan segera jika gajah masuk ke pemukiman.",
     "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
-    "image_url": "https://ksdae.menlhk.go.id/assets/gallery/Gajah_Tunggang_Suryono.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Borobudur-Temple-Park_Elephant-cage-01.jpg/1200px-Borobudur-Temple-Park_Elephant-cage-01.jpg"
   },
   "beruang_info": {
     "keywords": ["beruang", "beruang madu"],
@@ -77,12 +77,13 @@
     "keywords": ["monyet", "kera"],
     "response": "Untuk mengatasi gangguan Monyet Ekor Panjang (Macaca fascicularis): 1. Pastikan tidak ada sumber makanan terbuka. 2. Tutup rapat tempat sampah. 3. Jangan memberi makan monyet agar mereka tidak kembali.",
     "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
-    "image_url": "https://ksdae.menlhk.go.id/assets/news/20240520165734-2024-05-20konten165717.jpg"
+    "image_url": "https://api.jatimnet.com/jinet/assets/media/news/news/image_front/blog-monyet-ekor-panjang-terancam-punah-2000-l.jpg"
   },
     "buaya_info": {
     "keywords": ["buaya"],
     "response": "Buaya sering ditemukan di sungai dan rawa. Hindari beraktivitas di tepi air saat senja atau malam hari. Jika melihat buaya, jaga jarak dan jangan mencoba mendekat. Laporkan kemunculan buaya di dekat pemukiman ke Call Center kami.",
-    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"]
+    "suggestions": ["Penanganan Konflik Satwa", "Kembali ke Menu Utama"],
+    "image_url": "https://awsimages.detik.net.id/visual/2023/08/12/buaya-foto-oleh-thang-nhat-tran-httpswwwpexelscomid-_169.jpeg?w=1200"
   },
   "informasi_umum": {
     "keywords": ["informasi umum", "info umum", "tentang bksda"],
@@ -102,25 +103,25 @@
   "tapir_info": {
     "keywords": ["tapir"],
     "response": "Tapir (Tapirus indicus) adalah mamalia pemakan tumbuhan yang aktif di malam hari. Ciri khasnya adalah warna hitam dan putih pada tubuhnya. Tapir merupakan salah satu satwa yang dilindungi di Indonesia.",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Malayan_Tapir_in_Malaysia.jpg/1200px-Malayan_Tapir_in_Malaysia.jpg",
+    "image_url": "https://cdn.betahita.id/6/0/8/2/6082_840x576.jpg",
     "suggestions": ["Flora & Fauna Khas", "Kembali ke Menu Utama"]
   },
   "kantung_semar_info": {
     "keywords": ["kantung semar"],
     "response": "Kantung Semar (Nepenthes) adalah genus tanaman karnivora. Tanaman ini memiliki kantung untuk menangkap serangga. Beberapa spesies Nepenthes dapat ditemukan di kawasan konservasi Riau.",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Nepenthes_truncata_producing_a_lower_pitcher.jpg/800px-Nepenthes_truncata_producing_a_lower_pitcher.jpg",
+    "image_url": "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/65/2024/09/26/6fa64fc2-9f0d-4fbc-80b1-c854df98600a-988145602.jpg",
     "suggestions": ["Flora & Fauna Khas", "Kembali ke Menu Utama"]
   },
   "rangkong_info": {
     "keywords": ["rangkong", "enggang"],
     "response": "Rangkong atau Enggang (Buceros rhinoceros) adalah burung ikonik dengan paruh besar melengkung. Burung ini adalah 'petani hutan' karena perannya dalam menyebarkan biji-bijian.",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Rhinoceros_hornbill_%28Buceros_rhinoceros%29_male.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Great_hornbill_Photograph_by_Shantanu_Kuveskar.jpg/250px-Great_hornbill_Photograph_by_Shantanu_Kuveskar.jpg",
     "suggestions": ["Flora & Fauna Khas", "Kembali ke Menu Utama"]
   },
     "arwana_info": {
     "keywords": ["arwana", "ikan arwana"],
     "response": "Arwana Asia (Scleropages formosus) adalah ikan air tawar purba yang memiliki nilai ekonomi tinggi. Spesies ini dilindungi karena populasinya di alam liar semakin langka.",
-    "image_url": "https://asset.kompas.com/crops/Wp0tt1T0vB5Fq8MMU22G52-hWqA=/0x0:1000x667/750x500/data/photo/2021/04/17/607a750b39567.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Osteoglossum_bicirrhosum.JPG",
     "suggestions": ["Flora & Fauna Khas", "Kembali ke Menu Utama"]
   },
   "program_kegiatan": {
@@ -142,22 +143,100 @@
     "keywords": ["daftar resort", "lokasi resort", "resort", "wilayah kerja"],
     "response": "Berikut adalah daftar resort dan tautan untuk melihat peta wilayah kerjanya:",
     "resorts": [
-      {"name": "Resort Kerumutan Tengah", "wilayah_kerja": "Wilayah kerja: SM Kerumutan di Kopau", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Kerumutan"},
-      {"name": "Resort Kerumutan Utara", "wilayah_kerja": "Wilayah kerja: SM Tasik Serkap, SM Tasik Besar Serkap, SM Kerumutan Utara", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Tasik+Serkap"},
-      {"name": "Resort Kerumutan Selatan", "wilayah_kerja": "Wilayah kerja: SM Kerumutan Selatan di Pekan Heran", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Kerumutan"},
-      {"name": "Resort Bukit Rimbang", "wilayah_kerja": "Wilayah kerja: SM Bukit Rimbang Bukit Baling (Tengah-Timur)", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Rimbang+Bukit+Baling"},
-      {"name": "Resort Bukit Baling", "wilayah_kerja": "Wilayah kerja: SM Bukit Rimbang Bukit Baling (Barat-Tengah)", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Rimbang+Bukit+Baling"},
-      {"name": "Resort Bukit Bungkuk", "wilayah_kerja": "Wilayah kerja: CA Bukit Bungkuk", "location_url": "https://www.google.com/maps/search/?api=1&query=Cagar+Alam+Bukit+Bungkuk"},
-      {"name": "Resort Bukit Batu", "wilayah_kerja": "Wilayah kerja: SM Bukit Batu", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Batu"},
-      {"name": "Resort Duri", "wilayah_kerja": "Wilayah kerja: SM Balai Raja, SM Giam Siak Kecil, PLG Sebanga", "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Balai+Raja"},
-      {"name": "Resort Dumai", "wilayah_kerja": "Wilayah kerja: CA Pulau Berkey dan TWA Sungai Dumai", "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Sungai+Dumai"},
-      {"name": "Resort Siak", "wilayah_kerja": "Wilayah kerja: SM Giam Siak Kecil, TN Zamrud, SM Tasik Belat", "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Nasional+Zamrud"},
-      {"name": "Resort Buluh Cina", "wilayah_kerja": "Wilayah kerja: TWA Buluh Cina", "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Buluh+Cina"},
-      {"name": "Resort Muka Kuning", "wilayah_kerja": "Wilayah kerja: TWA Muka Kuning", "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Muka+Kuning"},
-      {"name": "Resort Pulau Rempang", "wilayah_kerja": "Wilayah kerja: TB Pulau Rempang, Pos Bandara Hang Nadim", "location_url": "https://www.google.com/maps/search/?api=1&query=Pulau+Rempang+Batam"},
-      {"name": "Resort Tanjung Pinang", "wilayah_kerja": "Wilayah kerja: KSA/KPA Bandara RHF, Pelabuhan Tanjung Pinang", "location_url": "https://www.google.com/maps/search/?api=1&query=Bandara+Raja+Haji+Fisabilillah"},
-      {"name": "Pusat Konservasi Gajah Sebanga", "wilayah_kerja": "Wilayah kerja: Pusat Konservasi Gajah di Sebanga, Duri", "location_url": "https://www.google.com/maps/search/?api=1&query=Pusat+Konservasi+Gajah+Sebanga"},
-      {"name": "Pusat Konservasi Gajah Minas", "wilayah_kerja": "Wilayah kerja: Pusat Konservasi Gajah di Minas", "location_url": "https://www.google.com/maps/search/?api=1&query=Pusat+Latihan+Gajah+Minas"}
+      {
+        "name": "Resort Kerumutan Tengah",
+        "wilayah_kerja": "Wilayah kerja: SM Kerumutan di Kopau",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Kerumutan",
+        "map_url": "https://bbksda-riau.id/images/summernote/bb1a6d9587021efcb937581d9ea52d2a.jpg"  
+      },
+      {
+        "name": "Resort Kerumutan Utara",
+        "wilayah_kerja": "Wilayah kerja: SM Tasik Serkap, SM Tasik Besar Serkap, SM Kerumutan Utara",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Tasik+Serkap",
+        "map_url": "https://bbksda-riau.id/images/summernote/bb1a6d9587021efcb937581d9ea52d2a.jpg"
+      },
+      {
+        "name": "Resort Kerumutan Selatan",
+        "wilayah_kerja": "Wilayah kerja: SM Kerumutan Selatan di Pekan Heran",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Kerumutan",
+        "map_url": "https://bbksda-riau.id/images/summernote/bb1a6d9587021efcb937581d9ea52d2a.jpg"
+      },
+      {
+        "name": "Resort Bukit Rimbang",
+        "wilayah_kerja": "Wilayah kerja: SM Bukit Rimbang Bukit Baling (Tengah-Timur)",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Rimbang+Bukit+Baling",
+        "map_url": "https://bbksda-riau.id/images/summernote/189e73c476e3d0d1585bbec75ff4823a.jpg"
+      },
+      {
+        "name": "Resort Bukit Baling",
+        "wilayah_kerja": "Wilayah kerja: SM Bukit Rimbang Bukit Baling (Barat-Tengah)",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Rimbang+Bukit+Baling",
+        "map_url": "https://bbksda-riau.id/images/summernote/189e73c476e3d0d1585bbec75ff4823a.jpg"
+      },
+      {
+        "name": "Resort Bukit Bungkuk",
+        "wilayah_kerja": "Wilayah kerja: CA Bukit Bungkuk",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Cagar+Alam+Bukit+Bungkuk",
+        "map_url": "https://bbksda-riau.id/images/summernote/0204d881a295c85c205e2dd242d5b12e.jpg"
+      },
+      {
+        "name": "Resort Bukit Batu",
+        "wilayah_kerja": "Wilayah kerja: SM Bukit Batu",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Bukit+Batu",
+        "map_url": "https://bbksda-riau.id/images/summernote/7b5f293723369991b2b7a3c1d64cc3ff.jpg"
+      },
+      {
+        "name": "Resort Duri",
+        "wilayah_kerja": "Wilayah kerja: SM Balai Raja, SM Giam Siak Kecil, PLG Sebanga",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Suaka+Margasatwa+Balai+Raja",
+        "map_url": "https://bbksda-riau.id/images/summernote/24ac503075e99d0fe3254cb22fb54e87.jpg"
+      },
+      {
+        "name": "Resort Dumai",
+        "wilayah_kerja": "Wilayah kerja: CA Pulau Berkey dan TWA Sungai Dumai",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Sungai+Dumai",
+        "map_url": "https://bbksda-riau.id/images/summernote/69d50c29c88b80dd23a82dc2aa9c4e15.jpg"
+      },
+      {
+        "name": "Resort Siak",
+        "wilayah_kerja": "Wilayah kerja: SM Giam Siak Kecil, TN Zamrud, SM Tasik Belat",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Nasional+Zamrud",
+        "map_url": "https://bbksda-riau.id/images/summernote/ce6c5225668b93eb076b0d57ed634db2.jpg"
+      },
+      {
+        "name": "Resort Buluh Cina",
+        "wilayah_kerja": "Wilayah kerja: TWA Buluh Cina",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Buluh+Cina",
+        "map_url": "https://bbksda-riau.id/images/summernote/d0e84d2494607cc63ede0484b929253a.jpg"
+      },
+      {
+        "name": "Resort Muka Kuning",
+        "wilayah_kerja": "Wilayah kerja: TWA Muka Kuning",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Taman+Wisata+Alam+Muka+Kuning",
+        "map_url": "https://bbksda-riau.id/images/summernote/365d08f5a0043a767512d40dd0948211.jpg"
+      },
+      {
+        "name": "Resort Pulau Rempang",
+        "wilayah_kerja": "Wilayah kerja: TB Pulau Rempang, Pos Bandara Hang Nadim",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Pulau+Rempang+Batam",
+        "map_url": "https://bbksda-riau.id/images/summernote/40ca958ab8fcdebe2dd982bddc1c08a6.jpg"
+      },
+      {
+        "name": "Resort Tanjung Pinang",
+        "wilayah_kerja": "Wilayah kerja: KSA/KPA Bandara RHF, Pelabuhan Tanjung Pinang",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Bandara+Raja+Haji+Fisabilillah"
+      },
+      {
+        "name": "Pusat Konservasi Gajah Sebanga",
+        "wilayah_kerja": "Wilayah kerja: Pusat Konservasi Gajah di Sebanga, Duri",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Pusat+Konservasi+Gajah+Sebanga",
+        "map_url": "https://bbksda-riau.id/images/summernote/1388c9ca3f8b8c74dc3c1f4ace9887ea.jpg"
+      },
+      {
+        "name": "Pusat Konservasi Gajah Minas",
+        "wilayah_kerja": "Wilayah kerja: Pusat Konservasi Gajah di Minas",
+        "location_url": "https://www.google.com/maps/search/?api=1&query=Pusat+Latihan+Gajah+Minas"
+      }
     ],
     "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"]
   },
@@ -184,7 +263,7 @@
     "social_links": [
         { "platform": "Facebook", "text": "Kunjungi Facebook Kami", "url": "https://www.facebook.com/profile.php?id=100088811995400" },
         { "platform": "Instagram", "text": "Follow Instagram Kami", "url": "https://www.instagram.com/bbksda_riau/" },
-        { "platform": "YouTube", "text": "Subscribe YouTube Kami", "url": "https://www.youtube.com/channel/UC-9K4-5_6-Q0_yZ-6_z-6_Q" }
+        { "platform": "YouTube", "text": "Subscribe YouTube Kami", "url": "https://www.youtube.com/channel/UCLsd05GD7vj97YBPCwafQvQ?view_as=subscriber" }
     ]
   },
     "berita_terbaru": {
