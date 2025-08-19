@@ -12,17 +12,17 @@
   "simaksi_info": {
     "keywords": ["simaksi", "info simaksi", "izin masuk", "mendaki", "masuk hutan", "tiket masuk", "izin pendakian", "camping"],
     "response": "Tentu, SIMAKSI (Surat Izin Masuk Kawasan Konservasi) diperlukan untuk kegiatan seperti pendakian atau penelitian. Apa yang ingin Anda ketahui lebih lanjut tentang SIMAKSI?",
-    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Bagaimana cara mengajukannya?"],
+    "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Ajukan SIMAKSI Online"],
     "context_id": "simaksi"
   },
   "simaksi_syarat": {
-    "keywords": ["syarat", "persyaratan", "dokumen apa saja", "berkas","syarat simaksi"],
+    "keywords": ["syarat-syarat", "persyaratan simaksi", "dokumen apa saja", "berkas yang dibutuhkan","apa saja syaratnya"],
     "parent_context": "simaksi",
     "response": "Syarat umum untuk pengajuan SIMAKSI adalah fotokopi KTP, surat keterangan sehat, dan mengisi formulir yang disediakan. Untuk kegiatan penelitian, proposal riset juga wajib dilampirkan.",
     "suggestions": ["Berapa biayanya?", "Ajukan SIMAKSI Online", "Kembali ke Menu Utama"]
   },
   "simaksi_biaya": {
-    "keywords": ["biaya", "harga", "tarif", "bayar berapa", "biaya masuk"],
+    "keywords": ["biaya simaksi", "harga tiket", "tarif masuk", "bayar berapa", "berapa biayanya"],
     "parent_context": "simaksi",
     "response": "Biaya atau tarif untuk SIMAKSI (karcis masuk) bervariasi tergantung pada kawasan konservasi yang dituju dan jenis kegiatan. Untuk rincian lebih lanjut, silakan pilih menu 'Rincian Biaya'.",
     "suggestions": ["Rincian Biaya", "Apa saja syaratnya?", "Ajukan SIMAKSI Online"]
@@ -33,7 +33,7 @@
     "suggestions": ["Layanan & Izin", "Kembali ke Menu Utama"]
   },
   "simaksi_link": {
-    "keywords": ["ajukan simaksi online", "link simaksi", "daftar simaksi", "bagaimana cara mengajukannya"],
+    "keywords": ["ajukan simaksi online", "link pendaftaran simaksi", "daftar simaksi", "bagaimana cara mengajukannya", "prosedur online"],
     "parent_context": "simaksi",
     "response": "Anda dapat mengajukan permohonan SIMAKSI secara online melalui tautan di bawah ini.",
     "suggestions": ["Apa saja syaratnya?", "Berapa biayanya?", "Kembali ke Menu Utama"],
@@ -251,7 +251,7 @@
     "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"]
   },
   "contact_info": {
-    "keywords": ["kontak kami", "kontak", "nomor telepon", "alamat kantor", "email bksda", "call center"],
+    "keywords": ["kontak kami", "kontak", "nomor telepon", "alamat kantor", "email bksda", "call center", "whatsapp", "nomor whatsapp", "wa"],
     "response": "Kantor kami beralamat di Jl. H.R. Soebrantas KM. 8,5, Pekanbaru. Untuk laporan darurat via WhatsApp, silakan klik tautan di bawah ini.",
     "suggestions": ["Informasi Umum", "Kembali ke Menu Utama"],
     "whatsapp_link": { "number": "6281374742981", "text": "Hubungi Call Center (WhatsApp)" }
@@ -270,12 +270,17 @@
     "keywords": ["berita terbaru", "berita", "news"],
     "response": "Untuk mendapatkan berita dan pembaruan terkini dari kegiatan kami, silakan kunjungi halaman berita di website resmi kami.",
     "suggestions": ["Kembali ke Menu Utama"],
-    "link": "https://bbksda-riau.id/index.php?r=post&id01=6",
+    "link": "https://bbksda-riau.id/index.php?r=post&id01=6&id02=28&token=a91d2eb9307946c2ab06a60f5b45a0d3",
     "link_text": "Lihat Berita Terbaru"
     },
   "chitchat_who": {
-    "keywords": ["kamu siapa", "ini siapa", "siapa kamu", "nama kamu"],
+    "keywords": ["kamu siapa", "ini siapa", "siapa kamu", "nama kamu","kamu ini siapa"],
     "response": "Saya adalah Asisten Virtual BKSDA Riau, siap membantu Anda!",
+    "suggestions": ["Kembali ke Menu Utama"]
+  },
+  "chitchat_what_can_you_do": {
+    "keywords": ["apa yang bisa kamu lakukan", "bisa bantu apa", "fungsimu apa"],
+    "response": "Saya bisa membantu menjawab pertanyaan tentang layanan, izin, penanganan konflik satwa, informasi umum, dan banyak lagi. Silakan tanyakan saja!",
     "suggestions": ["Kembali ke Menu Utama"]
   },
   "chitchat_how_are_you": {
@@ -284,7 +289,7 @@
     "suggestions": ["Kembali ke Menu Utama"]
   },
   "chitchat_thanks": {
-      "keywords": ["terima kasih", "makasih", "thanks", "terimakasih"],
+      "keywords": ["terima kasih", "makasih", "thanks", "terimakasih","baiklah","ok","tq"],
       "response": "Sama-sama! Senang bisa membantu Anda.",
       "suggestions": ["Kembali ke Menu Utama"]
   }

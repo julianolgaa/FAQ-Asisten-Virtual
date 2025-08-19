@@ -18,20 +18,23 @@
         .chat-container {
             width: 400px;
             height: 600px;
-            background-color: white;
+            background-color: white
+            ;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            /* *** AWAL PERBAIKAN LOGO LATAR BELAKANG *** */
             background-image: url('bbksda.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: 200px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.96); /* Dibuat sedikit lebih solid */
             background-blend-mode: lighten;
+            /* *** AKHIR PERBAIKAN LOGO LATAR BELAKANG *** */
         }
         .chat-header {
-            background-color: #0acc1a;
+            background-color: #386641;
             color: white;
             padding: 16px;
             border-top-left-radius: 12px;
@@ -50,6 +53,10 @@
             transform: translateY(-50%);
             height: 35px;
             width: 35px;
+            /* *** AWAL PERBAIKAN GAYA LOGO *** */
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2)); /* Menambah sedikit bayangan agar lebih jelas */
+            border-radius: 50%;
+            /* *** AKHIR PERBAIKAN GAYA LOGO *** */
         }
         .chat-header h2 {
             margin: 0;
@@ -84,7 +91,7 @@
             border-bottom-left-radius: 4px;
         }
         .user-message {
-            background-color: #0084ff;
+            background-color: #1f72c0;
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -106,8 +113,8 @@
         }
         .suggestion-btn {
             background-color: #fff;
-            border: 1px solid #0acc1a;
-            color: #0acc1a;
+            border: 1px solid #386641;
+            color: #386641;
             padding: 10px 15px;
             border-radius: 18px;
             cursor: pointer;
@@ -175,7 +182,7 @@
             margin-right: 10px;
         }
         .chat-input button {
-            background-color: #0acc1a;
+            background-color: #386641;
             color: white;
             border: none;
             border-radius: 50%;
@@ -229,6 +236,18 @@
         .header-btn:hover {
             opacity: 1;
         }
+        /* *** AWAL PENAMBAHAN CSS PENGHITUNG PENGUNJUNG *** */
+        .visitor-counter {
+            text-align: center;
+            padding: 8px;
+            font-size: 0.8rem;
+            color: #90949c;
+            background-color: #f8f9fa;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            border-top: 1px solid #ddd;
+        }
+        /* *** AKHIR PENAMBAHAN CSS PENGHITUNG PENGUNJUNG *** */
     </style>
 </head>
 <body>
@@ -242,13 +261,11 @@
             </button>
         </div>
         <div class="chat-window" id="chat-window">
-            <!-- *** AWAL PERUBAHAN: Indikator loading diletakkan di sini dan disembunyikan *** -->
             <div id="loading-indicator-wrapper" class="message-wrapper bot-message-wrapper" style="display: none;">
                 <div class="loading-indicator">
                     <span class="dot1"></span><span class="dot2"></span><span class="dot3"></span>
                 </div>
             </div>
-            <!-- *** AKHIR PERUBAHAN *** -->
         </div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Ketik pesan Anda...">
@@ -256,6 +273,11 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
         </div>
+        <!-- *** AWAL PENAMBAHAN HTML PENGHITUNG PENGUNJUNG *** -->
+        <div class="visitor-counter">
+            Pengunjung: <span id="visit-count">0</span>
+        </div>
+        <!-- *** AKHIR PENAMBAHAN HTML PENGHITUNG PENGUNJUNG *** -->
     </div>
 
     <script>
@@ -396,12 +418,10 @@
             chatWindow.appendChild(feedbackContainer);
         }
 
-        // *** AWAL PERUBAHAN: Fungsi show/hide loading diubah ***
         function showLoadingIndicator() {
             const loadingWrapper = document.getElementById('loading-indicator-wrapper');
             if (loadingWrapper) {
                 loadingWrapper.style.display = 'flex';
-                // Pindahkan ke bagian bawah chat window setiap kali ditampilkan
                 chatWindow.appendChild(loadingWrapper);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
             }
@@ -413,7 +433,6 @@
                 loadingWrapper.style.display = 'none';
             }
         }
-        // *** AKHIR PERUBAHAN ***
 
         async function sendMessage(messageTextOverride) {
             const messageText = messageTextOverride || userInput.value.trim();
@@ -434,11 +453,10 @@
                 if (!response.ok) throw new Error('Gagal menghubungi server.');
                 const data = await response.json();
                 
-                // Sembunyikan loading sebelum menambahkan pesan baru
                 hideLoadingIndicator();
                 setTimeout(() => {
                     addMessage(data.response, 'bot', data);
-                }, 200); // Penundaan sedikit agar lebih mulus
+                }, 200);
 
             } catch (error) {
                 console.error('Error:', error);
@@ -461,25 +479,39 @@
         }
 
         function clearChat() {
-            // Sembunyikan juga loading indicator saat chat dibersihkan
             hideLoadingIndicator();
-            // Hapus semua elemen anak kecuali loading indicator
-            while (chatWindow.firstChild && chatWindow.firstChild.id !== 'loading-indicator-wrapper') {
-                chatWindow.removeChild(chatWindow.firstChild);
-            }
+            const children = Array.from(chatWindow.children);
+            children.forEach(child => {
+                if (child.id !== 'loading-indicator-wrapper') {
+                    chatWindow.removeChild(child);
+                }
+            });
             sendMessage('halo');
         }
 
+        // *** AWAL PERBAIKAN FUNGSI PENGHITUNG PENGUNJUNG ***
         async function recordVisit() {
             try {
-                await fetch('http://julianolgaa.pythonanywhere.com/api/visit', {
+                const response = await fetch('http://julianolgaa.pythonanywhere.com/api/visit', {
                     method: 'POST',
                 });
+
+                if (!response.ok) throw new Error('Gagal mengambil data kunjungan.');
+                
+                const data = await response.json();
+                
+                if (data && data.visits) {
+                    const visitCountElement = document.getElementById('visit-count');
+                    if (visitCountElement) {
+                        visitCountElement.textContent = data.visits;
+                    }
+                }
                 console.log('Kunjungan dicatat.');
             } catch (error) {
                 console.error('Gagal mencatat kunjungan:', error);
             }
         }
+        // *** AKHIR PERBAIKAN FUNGSI PENGHITUNG PENGUNJUNG ***
 
         sendBtn.addEventListener('click', () => sendMessage());
         userInput.addEventListener('keydown', (event) => {

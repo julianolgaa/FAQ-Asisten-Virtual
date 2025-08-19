@@ -6,14 +6,14 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from fuzzywuzzy import process
-from datetime import datetime
+# *** AWAL PERBAIKAN ZONA WAKTU ***
+from datetime import datetime, timezone, timedelta
+# *** AKHIR PERBAIKAN ZONA WAKTU ***
 
 app = Flask(__name__)
 CORS(app)
 
 # --- LOKASI FILE PENGHITUNG ---
-# Menentukan path absolut agar selalu benar di server PythonAnywhere
-# __file__ adalah path ke file app.py saat ini, os.path.dirname mendapatkan direktorinya.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 COUNTER_FILE = os.path.join(BASE_DIR, "visitor_count.txt")
 
@@ -35,8 +35,15 @@ user_context = {"topic": None}
 
 # --- FUNGSI SAPAAN DINAMIS ---
 def get_dynamic_greeting():
-    """Membuat sapaan berdasarkan waktu saat ini."""
-    current_hour = datetime.now().hour
+    """Membuat sapaan berdasarkan waktu saat ini di zona waktu WIB (UTC+7)."""
+    # *** AWAL PERBAIKAN ZONA WAKTU ***
+    # Tentukan zona waktu WIB (UTC+7)
+    wib_timezone = timezone(timedelta(hours=7))
+    # Dapatkan waktu saat ini dalam zona waktu WIB
+    current_time_wib = datetime.now(wib_timezone)
+    current_hour = current_time_wib.hour
+    # *** AKHIR PERBAIKAN ZONA WAKTU ***
+
     if 5 <= current_hour < 12:
         return "Selamat Pagi!"
     elif 12 <= current_hour < 15:
@@ -51,7 +58,6 @@ def get_bot_response(user_input):
     """Mencari respons terbaik berdasarkan input pengguna."""
     text = user_input.lower().strip()
     
-    # Prioritaskan pencarian berdasarkan konteks
     if user_context.get("topic"):
         for key, value in knowledge_base.items():
             if value.get("parent_context") == user_context["topic"]:
@@ -59,7 +65,6 @@ def get_bot_response(user_input):
                 if match and match[1] > 85:
                     return value
 
-    # Lakukan pencarian umum jika tidak ada kecocokan kontekstual
     highest_score = 0
     best_match_key = None
     for key, value in knowledge_base.items():
@@ -68,16 +73,13 @@ def get_bot_response(user_input):
             highest_score = match[1]
             best_match_key = key
 
-    # Jika kecocokan terbaik cukup tinggi, berikan jawaban
     if highest_score > 75:
         response_data = knowledge_base[best_match_key].copy()
 
-        # Logika sapaan dinamis
         if best_match_key == 'greetings':
             greeting = get_dynamic_greeting()
             response_data['response'] = f"{greeting} {response_data['response']}"
         
-        # Atur atau hapus konteks
         if "context_id" in response_data:
             user_context["topic"] = response_data["context_id"]
         elif "parent_context" not in response_data:
@@ -85,7 +87,6 @@ def get_bot_response(user_input):
             
         return response_data
 
-    # Jawaban default
     user_context["topic"] = None
     return {
         "response": "Maaf, saya belum mengerti. Coba ketik 'menu' untuk melihat pilihan utama.",
@@ -132,7 +133,6 @@ def track_visit():
     return jsonify({"status": "success", "visits": count})
 
 if __name__ == '__main__':
-    # Bagian ini hanya berjalan jika file dieksekusi secara lokal
     if not knowledge_base:
         print("Aplikasi tidak dapat dijalankan karena knowledge_base kosong atau gagal dimuat.")
     else:
